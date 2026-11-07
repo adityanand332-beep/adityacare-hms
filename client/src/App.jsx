@@ -1,6 +1,6 @@
 import React,{useEffect,useState}from'react';
 import{Activity,Users,Stethoscope,CalendarDays,LayoutDashboard,Search,Bell,LogOut,HeartPulse,Clock3,CheckCircle2,AlertCircle,Plus,UserRound,ClipboardList,ArrowRight,ShieldCheck,RefreshCw}from'lucide-react';
-const API='http://localhost:5000/api';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 const money=n=>'₹'+Number(n||0).toLocaleString('en-IN');
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
 function App(){
