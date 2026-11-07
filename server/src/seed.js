@@ -15,7 +15,7 @@ const phone=()=>`9${String(Math.floor(100000000+Math.random()*899999999))}`;
 const slug=s=>s.toLowerCase().replace(/[^a-z]+/g,'.');
 await mongoose.connect(process.env.MONGODB_URI);
 try{
- await Promise.all([Doctor.deleteMany({}),Patient.deleteMany({}),Appointment.deleteMany({}),User.deleteMany({})]);
+
  const doctors=Array.from({length:500},(_,i)=>{
   const name=`Dr. ${pick(first)} ${pick(last)}`,dep=departments[i%departments.length];
   return {doctorId:`AC-DOC-${String(i+1).padStart(4,'0')}`,name,email:`doctor${i+1}@adityacare.demo`,phone:phone(),department:dep,specialization:dep,qualification:pick(qualifications),experience:2+(i%29),consultationFee:400+(i%8)*150,availability:['Mon','Tue','Wed','Thu','Fri','Sat'].slice(0,3+(i%4)),status:'Active',avatar:`https://i.pravatar.cc/120?img=${(i%70)+1}`,bio:`Experienced ${dep.toLowerCase()} specialist providing patient-focused care.`};
